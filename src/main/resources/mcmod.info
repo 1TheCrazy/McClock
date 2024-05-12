@@ -1,14 +1,14 @@
 [
   {
     "modid": "${modid}",
-    "name": "Xample Mod",
-    "description": "A mod that is used as an example.",
+    "name": "McClock",
+    "description": "A mod to tell you the time while being in-game",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "https://github.com/romangraef/Forge1.8.9Template/",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "updateUrl": "",
     "authorList": [
-      "You"
+      "1TheCrazy"
     ],
     "credits": "",
     "logoFile": "",

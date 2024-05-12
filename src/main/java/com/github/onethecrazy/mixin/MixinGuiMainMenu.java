@@ -1,4 +1,4 @@
-package com.github.1thecrazy.mcclock.mixin;
+package com.github.onethecrazy.mixin;
 
 import net.minecraft.client.gui.GuiMainMenu;
 import org.spongepowered.asm.mixin.Mixin;
