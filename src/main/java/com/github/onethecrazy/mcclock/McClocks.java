@@ -12,21 +12,27 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 @Mod(modid = "mcclock", useMetadata=true)
 public class McClocks {
 
-    public static SaveClass Save;
+    public static ClockState state;
     public static GuiScreen commandOpenGui = null;
+    public static boolean isConfigGuiOpen = false;
+    public static Clock clock ;
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         StateSaver.Init();
 
+        clock = new Clock();
+
         ClientCommandHandler.instance.registerCommand(new ClockGUICommand());
         ClientCommandHandler.instance.registerCommand(new ClockCommand());
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(clock);
     }
 
     @SubscribeEvent
     public void onTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END) return;
+
         if (commandOpenGui != null) {
             Minecraft.getMinecraft().displayGuiScreen(commandOpenGui);
             commandOpenGui = null;

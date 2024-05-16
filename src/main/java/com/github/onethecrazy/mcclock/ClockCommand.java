@@ -25,11 +25,11 @@ public class ClockCommand extends CommandBase {
         if(args.length == 0){
             sender.addChatMessage(new ChatComponentText("§o/clock enable§r ---> Enables the clock\n§o/clock disable§r ---> Disables the clock\n§o/clockgui§r ---> Opens the configuration of the Clock-GUI"));
         } else if(args[0].equals("enable")){
-            McClocks.Save.isClockEnabled = true;
+            McClocks.state.isEnabled = true;
             StateSaver.Save();
             sender.addChatMessage(new ChatComponentText("§aEnabled the in-game Clock"));
         }else if(args[0].equals("disable")){
-            McClocks.Save.isClockEnabled = false;
+            McClocks.state.isEnabled = false;
             StateSaver.Save();
             sender.addChatMessage(new ChatComponentText("§cDisabled the in-game Clock"));
         }
