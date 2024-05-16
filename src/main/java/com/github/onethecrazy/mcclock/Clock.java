@@ -7,8 +7,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.LogManager;
-import scala.Float;
-import scala.Int;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -54,21 +52,20 @@ public class Clock{
         //------- Fix Text Size and Position -------
         float requiredTextScale = state.size;
         if((fontRenderer.getStringWidth(clockText) + 16) > (state.right - state.left))
-        {
-            LogManager.getLogger("McClock").info("size needs to be reworked");
-            requiredTextScale *= ((state.right - state.left) / (float)fontRenderer.getStringWidth(clockText));
-        }
+            requiredTextScale *= (state.right - state.left) / ((fontRenderer.getStringWidth(clockText) + 16f));
 
 
-        int textX = state.left + ((state.right - state.left) - fontRenderer.getStringWidth(clockText)) / 2;
-        int textY = state.top + ((state.bottom - state.top) - fontRenderer.FONT_HEIGHT) / 2;
+//include reqTextScale in calculations and fix file structure pls UwU
+        float textX = (state.left * requiredTextScale) + ((state.right - state.left) - fontRenderer.getStringWidth(clockText)) / 2f;
+        float textY = (state.top * requiredTextScale) + ((state.bottom - state.top) - fontRenderer.FONT_HEIGHT) / 2f;
 
-
+LogManager.getLogger("McClock").info("X: " + textX + ", Y: " + textY);
         GuiScreen.drawRect(state.left, state.top, state.right, state.bottom, (int)state.backgroundColor);
 
 
-//doesnt work
-        GlStateManager.scale(1, 1, 1);
+        GlStateManager.popMatrix();
+        GlStateManager.pushMatrix();
+
         GlStateManager.scale(requiredTextScale, requiredTextScale, 1);
         GlStateManager.translate(textX, textY, 1);
 
