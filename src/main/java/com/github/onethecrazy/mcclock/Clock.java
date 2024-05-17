@@ -51,15 +51,17 @@ public class Clock{
 
         //------- Fix Text Size and Position -------
         float requiredTextScale = state.size;
-        if((fontRenderer.getStringWidth(clockText) + 16) > (state.right - state.left))
-            requiredTextScale *= (state.right - state.left) / ((fontRenderer.getStringWidth(clockText) + 16f));
+        float scaleFactor = 1f;
 
+        if((fontRenderer.getStringWidth(clockText) + 16) > (state.right - state.left)){
+            scaleFactor = (state.right - state.left) / ((fontRenderer.getStringWidth(clockText) + 16f));
+            requiredTextScale *= scaleFactor;
+        }
 
-//include reqTextScale in calculations and fix file structure pls UwU
-        float textX = (state.left * requiredTextScale) + ((state.right - state.left) - fontRenderer.getStringWidth(clockText)) / 2f;
-        float textY = (state.top * requiredTextScale) + ((state.bottom - state.top) - fontRenderer.FONT_HEIGHT) / 2f;
+//include reqTextScale in Y calculations and fix file structure pls UwU
+        float textX = state.left + ((state.right - state.left) - fontRenderer.getStringWidth(clockText) * scaleFactor) / 2f;
+        float textY = state.top + ((state.bottom - state.top) - fontRenderer.FONT_HEIGHT) / 2f;
 
-LogManager.getLogger("McClock").info("X: " + textX + ", Y: " + textY);
         GuiScreen.drawRect(state.left, state.top, state.right, state.bottom, (int)state.backgroundColor);
 
 

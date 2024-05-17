@@ -51,22 +51,22 @@ public class ClockConfigGUI extends GuiScreen {
             String newDatePattern;
 
             switch (currentPatten) {
-                case "dd/mm/yyyy":
-                    newDatePattern = "mm/dd/yyy";
+                case "dd/MM/yyyy":
+                    newDatePattern = "MM/dd/yyy";
                     break;
-                case "mm/dd/yyy":
+                case "MM/dd/yyy":
                     newDatePattern = "dd. MMM yyyy";
                     break;
                 case "dd. MMM yyyy":
                     newDatePattern = "dd. MMMM yyyy";
                     break;
                 case "dd. MMMM yyyy":
-                    newDatePattern = "dd/mm/yyyy";
+                    newDatePattern = "dd/MM/yyyy";
                     break;
 
                     //This will never happen, but the compiler wants what the compiler wants...
                 default:
-                    newDatePattern = "dd/mm/yyyy";
+                    newDatePattern = "dd/MM/yyyy";
                     break;
             }
 
@@ -85,8 +85,8 @@ public class ClockConfigGUI extends GuiScreen {
         drawDefaultBackground();
 
         ResizeDrag(mouseX, mouseY);
-
-        drawRect((int)(McClocks.state.right * McClocks.state.size - 3), (int)(McClocks.state.bottom * McClocks.state.size - 3), (int)(McClocks.state.right * McClocks.state.size + 3), (int)(McClocks.state.bottom * McClocks.state.size + 3), 0xAE7FE8E8);
+        if(McClocks.state.isEnabled)
+            drawRect((int)(McClocks.state.right * McClocks.state.size - 3), (int)(McClocks.state.bottom * McClocks.state.size - 3), (int)(McClocks.state.right * McClocks.state.size + 3), (int)(McClocks.state.bottom * McClocks.state.size + 3), 0xAE7FE8E8);
 
         GlStateManager.disableDepth();
         McClocks.clock.onRenderGameOverlay(null);
@@ -127,8 +127,12 @@ public class ClockConfigGUI extends GuiScreen {
     }
 
     public void ResizeDrag(int mouseX, int mouseY){
+        if(!McClocks.state.isEnabled)
+            return;
+
         if(isResizeDragging){
-            boolean isUsingBottomEdge = ((McClocks.state.right * McClocks.state.size) > mouseX * 1.01f);
+
+            boolean isUsingBottomEdge = ((McClocks.state.bottom * McClocks.state.size) <= (mouseY + 5)) && ((McClocks.state.right * McClocks.state.size) >= (mouseX + 2));
 
             if(isUsingBottomEdge)
                 McClocks.state.size = Math.max(((GuiSlider)this.buttonList.get(1)).getMinValue(), Math.min((McClocks.state.size + ((mouseY - (McClocks.state.bottom * McClocks.state.size)) / (float)McClocks.state.bottom)), ((GuiSlider)this.buttonList.get(1)).getMaxValue()));
