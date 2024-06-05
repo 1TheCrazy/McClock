@@ -1,4 +1,4 @@
-package com.github.onethecrazy.mcclock;
+package com.github.onethecrazy.mcclock.statics;
 
 @FunctionalInterface
 public interface IValueChangedCallback {

@@ -1,9 +1,9 @@
-package com.github.onethecrazy.mcclock;
+package com.github.onethecrazy.mcclock.objects;
 
+import com.github.onethecrazy.mcclock.statics.IValueChangedCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.ResourceLocation;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

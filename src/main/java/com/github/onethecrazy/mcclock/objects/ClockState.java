@@ -1,4 +1,6 @@
-package com.github.onethecrazy.mcclock;
+package com.github.onethecrazy.mcclock.objects;
+
+import com.github.onethecrazy.mcclock.statics.BackgroundColor;
 
 public class ClockState {
     public int left;
@@ -9,11 +11,15 @@ public class ClockState {
     public long backgroundColor; //BackgroundColor-class
     public int textColor;
     public boolean isChroma;
+    public int chromaVariation;
     public boolean isEnabled;
     public boolean showDate;
     public String datePattern;
     public boolean showWeekday;
     public boolean useTwentyFourHourFormat;
+    public int heightMargin;
+    public int widthMargin;
+
 
     public ClockState(){
         this.left = 0;
@@ -29,6 +35,9 @@ public class ClockState {
         this.datePattern = "dd/MMMM/yyyy";
         this.showWeekday = false;
         this.useTwentyFourHourFormat = true;
+        this.heightMargin = 2;
+        this.widthMargin = 4;
+        this.chromaVariation = 0;
     }
 }
 

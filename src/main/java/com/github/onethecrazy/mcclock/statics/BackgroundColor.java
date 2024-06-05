@@ -1,4 +1,4 @@
-package com.github.onethecrazy.mcclock;
+package com.github.onethecrazy.mcclock.statics;
 
 public class BackgroundColor{
     public static final int darkGreyTransparent = 0x90000000;

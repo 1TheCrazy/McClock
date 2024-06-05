@@ -1,5 +1,6 @@
-package com.github.onethecrazy.mcclock;
+package com.github.onethecrazy.mcclock.commands;
 
+import com.github.onethecrazy.mcclock.McClocks;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;

@@ -1,5 +1,12 @@
 package com.github.onethecrazy.mcclock;
 
+import com.github.onethecrazy.mcclock.commands.ClockCommand;
+import com.github.onethecrazy.mcclock.commands.ClockGUICommand;
+import com.github.onethecrazy.mcclock.objects.Clock;
+import com.github.onethecrazy.mcclock.objects.ClockState;
+import com.github.onethecrazy.mcclock.objects.StateSaver;
+
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.client.ClientCommandHandler;
