@@ -184,7 +184,7 @@ public class ClockConfigGUI extends GuiScreen {
         if(isMoveDragging){
             McClocks.state.left = (int)((McClocks.state.left + (mouseX - oldX)) / McClocks.state.size);
 
-            LogManager.getLogger("smth").info(((McClocks.state.left + (mouseX - oldX)) / McClocks.state.size) + " as int " + (int)((McClocks.state.left + (mouseX - oldX)) / McClocks.state.size)); //idk fix this ig here issue wtf ??? wanna commit die
+            LogManager.getLogger("smth").info(((McClocks.state.left + (mouseX - oldX)) / McClocks.state.size) + " as int " + (int)((McClocks.state.left + (mouseX - oldX)) / McClocks.state.size)); //idk fix this ig here issue wtf ??? wanna commit die!!
             LogManager.getLogger("smth").info("X: " + McClocks.state.left + ", Y: " + McClocks.state.top);
             oldX = mouseX;
         }
