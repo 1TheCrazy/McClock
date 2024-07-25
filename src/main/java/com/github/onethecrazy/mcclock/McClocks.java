@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.apache.logging.log4j.LogManager;
 
 @Mod(modid = "mcclock", useMetadata=true)
 public class McClocks {
@@ -27,7 +28,6 @@ public class McClocks {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         StateSaver.Init();
-
         clock = new Clock();
 
         ClientCommandHandler.instance.registerCommand(new ClockGUICommand());

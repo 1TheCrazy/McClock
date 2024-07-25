@@ -18,7 +18,7 @@ public class GuiSlider extends GuiButton {
     private final int decimalPlaces;
     private final IValueChangedCallback valueChangeCallback;
 
-    public GuiSlider(int buttonId, int _x, int _y, int width, int height, String _buttonText, float defaultValue, float _maxValue, float _minValue, int _decimalPlaces, IValueChangedCallback _sizeChangeCallback) {
+    public GuiSlider(int buttonId, int _x, int _y, int width, int height, String _buttonText, float defaultValue, float _maxValue, float _minValue, int _decimalPlaces, IValueChangedCallback _valueChangeCallback) {
         super(buttonId, _x, _y, width, height, _buttonText + ": " + new BigDecimal(defaultValue).setScale(_decimalPlaces, RoundingMode.HALF_UP).floatValue());
         this.sliderValue = defaultValue;//also init-value
 
@@ -26,7 +26,7 @@ public class GuiSlider extends GuiButton {
         minValue = _minValue;
         buttonText = _buttonText;
         decimalPlaces = _decimalPlaces;
-        valueChangeCallback = _sizeChangeCallback;
+        valueChangeCallback = _valueChangeCallback;
     }
 
     @Override
@@ -86,5 +86,6 @@ public class GuiSlider extends GuiButton {
 
     public void setSliderValue(float value) {
         sliderValue = value;
+        valueChangeCallback.onValueChanged(sliderValue);
     }
 }
